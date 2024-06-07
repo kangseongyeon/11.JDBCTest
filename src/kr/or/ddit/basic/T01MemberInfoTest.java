@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
-import kr.or.ddit.util.JDBCUtil2;
+import kr.or.ddit.util.JDBCUtil3;
 
 /*
    회원정보를 관리하는 프로그램을 작성하는데 
@@ -106,7 +106,7 @@ public class T01MemberInfoTest {
 		System.out.println("--------------------------------------------------");
 		
 		try {
-			conn = JDBCUtil2.getConnection();
+			conn = JDBCUtil3.getConnection();
 			
 			stmt = conn.createStatement();
 			
@@ -133,7 +133,7 @@ public class T01MemberInfoTest {
 		} catch(SQLException ex) {
 			ex.printStackTrace();
 		} finally {
-			JDBCUtil2.close(conn, stmt, pstmt, rs);
+			JDBCUtil3.close(conn, stmt, pstmt, rs);
 		}
 	}
 
@@ -150,7 +150,7 @@ public class T01MemberInfoTest {
 		/////////////////////////////////////////
 		
 		try {
-			conn = JDBCUtil2.getConnection();
+			conn = JDBCUtil3.getConnection();
 			
 			String sql = " delete from mymember where mem_id = ? ";
 			
@@ -168,7 +168,7 @@ public class T01MemberInfoTest {
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		} finally {
-			JDBCUtil2.close(conn, stmt, pstmt, rs);
+			JDBCUtil3.close(conn, stmt, pstmt, rs);
 		}
 	}
 
@@ -207,7 +207,7 @@ public class T01MemberInfoTest {
 		/////////////////////////////////////////////////////////
 
 		try {
-			conn = JDBCUtil2.getConnection();
+			conn = JDBCUtil3.getConnection();
 			String sql = " update mymember " + " set mem_name = ?, mem_tel = ?, mem_addr = ? " + " where mem_id = ?";
 
 			pstmt = conn.prepareStatement(sql);
@@ -226,7 +226,7 @@ public class T01MemberInfoTest {
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		} finally {
-			JDBCUtil2.close(conn, stmt, pstmt, rs);
+			JDBCUtil3.close(conn, stmt, pstmt, rs);
 		}
 	}
 
@@ -272,7 +272,7 @@ public class T01MemberInfoTest {
 			// 옵션...
 			// Class.forName("oracle.jdbc.driver.OracleDriver");
 
-			conn = JDBCUtil2.getConnection();
+			conn = JDBCUtil3.getConnection();
 
 			String sql = " INSERT INTO MYMEMBER (MEM_ID, MEM_NAME, MEM_TEL, MEM_ADDR) " + " VALUES (?, ?, ?, ?) ";
 
@@ -296,7 +296,7 @@ public class T01MemberInfoTest {
 			e.printStackTrace();
 		} finally {
 			// 자원반납
-			JDBCUtil2.close(conn, stmt, pstmt, rs);
+			JDBCUtil3.close(conn, stmt, pstmt, rs);
 		}
 
 	}
@@ -310,7 +310,7 @@ public class T01MemberInfoTest {
 	private boolean checkMember(String memId) {
 		boolean isExist = false;
 		try {
-			conn = JDBCUtil2.getConnection();
+			conn = JDBCUtil3.getConnection();
 
 			String sql = " select count(*) as cnt\r\n" + "from mymember\r\n" + "where mem_id = ? ";
 
@@ -334,7 +334,7 @@ public class T01MemberInfoTest {
 			ex.printStackTrace();
 		} finally {
 			// 자원반납
-			JDBCUtil2.close(conn, stmt, pstmt, rs);
+			JDBCUtil3.close(conn, stmt, pstmt, rs);
 		}
 
 		return isExist;
