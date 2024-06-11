@@ -281,6 +281,8 @@ public class T01MemberInfoTest {
 			conn = JDBCUtil3.getConnection();
 
 			String sql = " INSERT INTO MYMEMBER (MEM_ID, MEM_NAME, MEM_TEL, MEM_ADDR) " + " VALUES (?, ?, ?, ?) ";
+			
+			SQL_LOGGER.debug("쿼리문 : " + sql);
 
 			pstmt = conn.prepareStatement(sql);
 
@@ -288,9 +290,13 @@ public class T01MemberInfoTest {
 			pstmt.setString(2, memName);
 			pstmt.setString(3, memTel);
 			pstmt.setString(4, memAddr);
+			
+			PARAM_LOGGER.debug("파라미터 값 : memID = " + memId + ", memName = " + memName + ", memTel = " + memTel + ", memAddr = " + memAddr);
 
 			int cnt = pstmt.executeUpdate();
 
+			RESULT_LOGGER.info("결과값 : {}", cnt);
+			
 			if (cnt > 0) {
 				System.out.println(memId + "인 회원정보 등록 성공!");
 			} else {
