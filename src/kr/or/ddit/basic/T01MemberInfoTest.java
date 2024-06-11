@@ -1,14 +1,15 @@
 package kr.or.ddit.basic;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Scanner;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import kr.or.ddit.util.JDBCUtil3;
 
@@ -50,6 +51,11 @@ public class T01MemberInfoTest {
 
 	private Scanner scan = new Scanner(System.in);
 
+	private static final Logger SQL_LOGGER = LogManager.getLogger("log4jexam.sql.Query");
+	private static final Logger PARAM_LOGGER = LogManager.getLogger("log4jexam.sql.Parmeter");
+	private static final Logger RESULT_LOGGER = LogManager.getLogger(T01MemberInfoTest.class);
+	
+	
 	/**
 	 * 메뉴를 출력하는 메서드
 	 */
