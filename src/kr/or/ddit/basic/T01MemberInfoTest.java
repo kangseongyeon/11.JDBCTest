@@ -251,7 +251,7 @@ public class T01MemberInfoTest {
 			System.out.println("추가할 회원 정보를 입력해주세요.");
 			System.out.print("회원ID >> ");
 			memId = scan.next();
-
+ 
 			isExist = checkMember(memId);
 
 			if (isExist) {
@@ -259,7 +259,7 @@ public class T01MemberInfoTest {
 				System.out.println("다시 입력해 주세요.");
 			}
 
-		} while (!isExist);
+		} while (isExist);
 
 		System.out.print("회원이름 >> ");
 		String memName = scan.next();
